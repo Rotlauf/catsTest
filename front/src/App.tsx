@@ -1,12 +1,13 @@
 import * as axios from "axios";
 import { useEffect } from "react";
-export const getCats = () => {
-  return axios.default.get(`/api/cats`);
+
+const getCats = (color: string) => {
+  return axios.default.get(`/api/cats`, { params: { color } });
 };
 
 function App() {
   useEffect(() => {
-    getCats().then((res) => {
+    getCats("black").then((res) => {
       console.log(res.data);
     });
   }, []);
